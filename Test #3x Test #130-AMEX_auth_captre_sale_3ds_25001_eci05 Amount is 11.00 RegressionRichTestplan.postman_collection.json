@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "3cb494f9-9bec-42c9-a688-42cffb0fc602",
+		"name": "Test #3x Test #130-AMEX_auth_captre_sale_3ds_25001_eci05 Amount is 11.00 RegressionRichTestplan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2688773",
+		"_collection_link": "https://incomm.postman.co/workspace/FS-OLS~4a4efe73-bedd-4933-adb6-368427fa0d2d/collection/2688773-3cb494f9-9bec-42c9-a688-42cffb0fc602?action=share&source=collection_link&creator=2688773"
+	},
+	"item": [
+		{
+			"name": "Test #130-AMEX_auth_3ds_25001_eci05_AXAuth11.00_Global",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"19042301\",\r\n\"amount\":\"11.00\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"l/SP0IcIaKHdckXSMPH02tPXTRX5Beu6gQl3NhBnVNJU4FaH+SXaELGrxEIN1hRvU08XxQDgnSB+jH9M2jVcZv+VxTmgMGky8kTRmmeSlKTdgIjFL/XpmAZxx4lzU1fz7dFkLeHi/sZwgK/R2InBYUTgV7U0ogcvo3P9Ey7IiE9wYHNmNIX0/CFRJqRLoPSXwMCFU7ukEioaj5BqDV22jSZMyb09ne0S3JvP36aCsUK7VZzztbr7KHvG41ZPX25gz93eKKMJMH+7T5Ttmsq9UrqR96YPNeRwzzAQsRaJ6nTLoMuctuyhaKMi4RbpOHAQINFhUr17i71NL+e6UQWtBQ==\",\r\n\"transaction_type\":\"AUTH\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"cHKcEnhW6bO3Wbqd3inBftSH3MEj5nTJX8hKKpmpw+30H/tgScrkuYDdxggjPHMPDP0D/J3JFdIBe1HD7Bg0OsakEOGZMkqO66MviGPknfcezwckcPs9Sz/mbvXWUmg/gAQhmLUm3Q5zjiulnAtw/aQsZpvoIqDUlEpmI3ip7v/NwT8oMfvDBkGqZwsjctCFDyLETQcx6RWtOtjk5796lSeIElpuuGWgvYZ2FZT5zzDwPY3pIdj9P3nfnd4SH1sVzr/2e1bWdXwRlErBRs2YYuKydHvGLK5Ym9tM8zT8Xg49EztPtf6bL9xJIcfCr+JakK9/wO9c3HytDfPB/i5tiw==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"63146\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"aevv_3ds\":\"UnMbHIdqo5SdCnZ4wo95W8u1D3WOOd1BxFCiLpoWLR5XK0npV/iKgh/Q1Q1J0xwe9QHu1rzJ4qJfAPuywNwNQbKO3oMUnb6do0oi/DpA0ILAwCSYkf51/PzK56CzqhG/tZKuYM8p9+er3wGrmfDgnqS50+G7wiby2CYn/NNpEps+vO98qZxxC2MItS1dkdn74aJ7Qg0qaPecLj0CXiLaBdDEW2T1y9t8nSqu5HLlCt2p9xkqbaaevxPx3FsgevT+AaBTpRbrvnY1pxjklOWvLum8+Jl1jhfxhBn/YY5JhGjva27NmvZkWx2qtJi2tLduEckGgBpBeQwEqol5xFmGqA==\",\r\n\"order_number\":\"{{collection_name}}\",\r\n\"merchant_id\":\"{{merchant_id}}\",\r\n\"terminal_id\":\"{{terminal_id}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #130-AMEX_capture_3ds_25001_eci05AX_11.00Global",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"19042301\",\r\n\"amount\":\"11.00\",\r\n//\"txn_id\":\"000100052409\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n//\"merchant_id\":\"06696262\",\r\n//\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"l/SP0IcIaKHdckXSMPH02tPXTRX5Beu6gQl3NhBnVNJU4FaH+SXaELGrxEIN1hRvU08XxQDgnSB+jH9M2jVcZv+VxTmgMGky8kTRmmeSlKTdgIjFL/XpmAZxx4lzU1fz7dFkLeHi/sZwgK/R2InBYUTgV7U0ogcvo3P9Ey7IiE9wYHNmNIX0/CFRJqRLoPSXwMCFU7ukEioaj5BqDV22jSZMyb09ne0S3JvP36aCsUK7VZzztbr7KHvG41ZPX25gz93eKKMJMH+7T5Ttmsq9UrqR96YPNeRwzzAQsRaJ6nTLoMuctuyhaKMi4RbpOHAQINFhUr17i71NL+e6UQWtBQ==\",\r\n\"transaction_type\":\"CAPTURE\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"cHKcEnhW6bO3Wbqd3inBftSH3MEj5nTJX8hKKpmpw+30H/tgScrkuYDdxggjPHMPDP0D/J3JFdIBe1HD7Bg0OsakEOGZMkqO66MviGPknfcezwckcPs9Sz/mbvXWUmg/gAQhmLUm3Q5zjiulnAtw/aQsZpvoIqDUlEpmI3ip7v/NwT8oMfvDBkGqZwsjctCFDyLETQcx6RWtOtjk5796lSeIElpuuGWgvYZ2FZT5zzDwPY3pIdj9P3nfnd4SH1sVzr/2e1bWdXwRlErBRs2YYuKydHvGLK5Ym9tM8zT8Xg49EztPtf6bL9xJIcfCr+JakK9/wO9c3HytDfPB/i5tiw==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"63146\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"aevv_3ds\":\"UnMbHIdqo5SdCnZ4wo95W8u1D3WOOd1BxFCiLpoWLR5XK0npV/iKgh/Q1Q1J0xwe9QHu1rzJ4qJfAPuywNwNQbKO3oMUnb6do0oi/DpA0ILAwCSYkf51/PzK56CzqhG/tZKuYM8p9+er3wGrmfDgnqS50+G7wiby2CYn/NNpEps+vO98qZxxC2MItS1dkdn74aJ7Qg0qaPecLj0CXiLaBdDEW2T1y9t8nSqu5HLlCt2p9xkqbaaevxPx3FsgevT+AaBTpRbrvnY1pxjklOWvLum8+Jl1jhfxhBn/YY5JhGjva27NmvZkWx2qtJi2tLduEckGgBpBeQwEqol5xFmGqA==\",\r\n\"order_number\":\"{{collection_name}}\",\r\n\"merchant_id\":\"{{merchant_id}}\",\r\n\"terminal_id\":\"{{terminal_id}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #130-AMEX_sale_3ds_25001_eci05 UTAMID 00016619 and TID45504159",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"SaleTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"Sale txn_id:\", SaleTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"19042301\",\r\n\"amount\":\"11.00\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n\"merchant_id\":\"00016619\",\r\n\"terminal_id\":\"45504159\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"l/SP0IcIaKHdckXSMPH02tPXTRX5Beu6gQl3NhBnVNJU4FaH+SXaELGrxEIN1hRvU08XxQDgnSB+jH9M2jVcZv+VxTmgMGky8kTRmmeSlKTdgIjFL/XpmAZxx4lzU1fz7dFkLeHi/sZwgK/R2InBYUTgV7U0ogcvo3P9Ey7IiE9wYHNmNIX0/CFRJqRLoPSXwMCFU7ukEioaj5BqDV22jSZMyb09ne0S3JvP36aCsUK7VZzztbr7KHvG41ZPX25gz93eKKMJMH+7T5Ttmsq9UrqR96YPNeRwzzAQsRaJ6nTLoMuctuyhaKMi4RbpOHAQINFhUr17i71NL+e6UQWtBQ==\",\r\n\"transaction_type\":\"SALE\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"cHKcEnhW6bO3Wbqd3inBftSH3MEj5nTJX8hKKpmpw+30H/tgScrkuYDdxggjPHMPDP0D/J3JFdIBe1HD7Bg0OsakEOGZMkqO66MviGPknfcezwckcPs9Sz/mbvXWUmg/gAQhmLUm3Q5zjiulnAtw/aQsZpvoIqDUlEpmI3ip7v/NwT8oMfvDBkGqZwsjctCFDyLETQcx6RWtOtjk5796lSeIElpuuGWgvYZ2FZT5zzDwPY3pIdj9P3nfnd4SH1sVzr/2e1bWdXwRlErBRs2YYuKydHvGLK5Ym9tM8zT8Xg49EztPtf6bL9xJIcfCr+JakK9/wO9c3HytDfPB/i5tiw==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"63146\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"aevv_3ds\":\"UnMbHIdqo5SdCnZ4wo95W8u1D3WOOd1BxFCiLpoWLR5XK0npV/iKgh/Q1Q1J0xwe9QHu1rzJ4qJfAPuywNwNQbKO3oMUnb6do0oi/DpA0ILAwCSYkf51/PzK56CzqhG/tZKuYM8p9+er3wGrmfDgnqS50+G7wiby2CYn/NNpEps+vO98qZxxC2MItS1dkdn74aJ7Qg0qaPecLj0CXiLaBdDEW2T1y9t8nSqu5HLlCt2p9xkqbaaevxPx3FsgevT+AaBTpRbrvnY1pxjklOWvLum8+Jl1jhfxhBn/YY5JhGjva27NmvZkWx2qtJi2tLduEckGgBpBeQwEqol5xFmGqA==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AuthTxnId",
+			"value": ""
+		},
+		{
+			"key": "CurrentDate",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "SaleTxnId[]",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CurrentDate",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

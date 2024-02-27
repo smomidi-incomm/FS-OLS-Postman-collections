@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "e1fe2228-c02a-418a-9093-4fafdcbcce23",
+		"name": "Test #134-Discover_auth_3ds_25002_eci06 Demothis11.00RichTestPlan\"merchant_id\":\"06766675\", \"terminal_id\":\"38214237\", Global",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2688773",
+		"_collection_link": "https://incomm.postman.co/workspace/4a4efe73-bedd-4933-adb6-368427fa0d2d/collection/2688773-e1fe2228-c02a-418a-9093-4fafdcbcce23?action=share&source=collection_link&creator=2688773"
+	},
+	"item": [
+		{
+			"name": "Test #134-Discover_auth_3ds_25002_eci06",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"2019091101\",\r\n\"amount\":\"11.00\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n//\"merchant_id\":\"06696262\",\r\n//\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"jzx2VOtgTnE9lB9IagFlG68nbP6W6//ZybsGlf0y+EbRGN7I+Gm4f3vat8jO2kEp9CUqaG9TdnqHyGqefCONVPXwe+pncyaGYe9K0EbYNiQvgq1LAx7riWXsYoBLHXzwQZ2XzmpVF1ZA8MA0Rx9NlphPEbIuZskGhJxPRl+aA9wldZ5V57frWIwgEMw5lMHL7s3zsT1KaX3852mv6LfbZnYu2YoYxYByzfvfm1ug323xA8bclJ+MKxw3JR72lXHCdhPokfL1pYaYlk0hTNpPZTPgsvy49mqpVBcgSNTAwuFnr5sURttizoKyagUfqbNqi2FWXhOk2UAAqL+fHaf3Eg==\",\r\n\"transaction_type\":\"AUTH\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"BdEMhzsvHXRPz/d5otqbkVZ5R4HGqOIGojD0xEhrmVrLR4F2e7PtF3irxC9g6A7XGIdJ73seEqIwI8OJMTNf9x6LfKc/pWTY7QSGqDoE0fA79SQFl31XfBzPrsJ8qZ7ThIdP3OHRCPL8+LwKy4qnLP8+ETdgm8dCXhr0eEKxajAol/celafwfWcIUx/D/icxsTzb4feaUuCg0RJhqOAVlN/NnanhirA/G+qGXeoVjsS0lW7BF4Y3yl4/YexGlHjmy68EVlftOQ0db2V9dfEzYsyOVuQjTtwLsb5kNisauGrwYkiy/eUweTzxaB9CegKbcqpmhFeEC3qsxzCfomOJMQ==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"63146\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"daca_3ds\":\"wze7ZkFHQK2H3OlXiKgKWpkdNUDQHIEZyALf9c/iQwYbAarrdRBVrP7ksa0SCVKXMBUypjfpf6GAgB7ekgOwD6TR9D1rnE293Dy1r6z3HPIdatdtzjmSEXJd1/BPB8CJbTk5CLP4cLbW2Q8hJOnm1Jwg/FKM+HlhGC3U7OB/zXbLvL5EllAq/RmCt6nPnS2GgRKVOT1qZijKo3eEEzlFo3dTKuIze1d7tS5R5hF/IphI68hOdIEa0wK1IWqfdBNnTUmB8HKuJfRzv8kf32BROEVcE0PWNoXj4N0JsrCYJgCbBHN39ZJDnLSnztW5F8EmbdnCFAMgDQ/bOEkYXBTXWA==\",\r\n\"eci_3ds\":\"06\",\r\n\"txn_id_3ds\":\"3132333435363738393031323334353637383930\",\r\n\"merchant_id\":\"{{merchant_id}}\",\r\n\"terminal_id\":\"{{terminal_id}}\",\r\n\"order_number\":\"{{collection_name}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #134-Discover_capture_3ds_25002_eci06",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"2019091101\",\r\n\"amount\":\"11.00\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n//\"merchant_id\":\"06696262\",\r\n//\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"jzx2VOtgTnE9lB9IagFlG68nbP6W6//ZybsGlf0y+EbRGN7I+Gm4f3vat8jO2kEp9CUqaG9TdnqHyGqefCONVPXwe+pncyaGYe9K0EbYNiQvgq1LAx7riWXsYoBLHXzwQZ2XzmpVF1ZA8MA0Rx9NlphPEbIuZskGhJxPRl+aA9wldZ5V57frWIwgEMw5lMHL7s3zsT1KaX3852mv6LfbZnYu2YoYxYByzfvfm1ug323xA8bclJ+MKxw3JR72lXHCdhPokfL1pYaYlk0hTNpPZTPgsvy49mqpVBcgSNTAwuFnr5sURttizoKyagUfqbNqi2FWXhOk2UAAqL+fHaf3Eg==\",\r\n\"transaction_type\":\"CAPTURE\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"BdEMhzsvHXRPz/d5otqbkVZ5R4HGqOIGojD0xEhrmVrLR4F2e7PtF3irxC9g6A7XGIdJ73seEqIwI8OJMTNf9x6LfKc/pWTY7QSGqDoE0fA79SQFl31XfBzPrsJ8qZ7ThIdP3OHRCPL8+LwKy4qnLP8+ETdgm8dCXhr0eEKxajAol/celafwfWcIUx/D/icxsTzb4feaUuCg0RJhqOAVlN/NnanhirA/G+qGXeoVjsS0lW7BF4Y3yl4/YexGlHjmy68EVlftOQ0db2V9dfEzYsyOVuQjTtwLsb5kNisauGrwYkiy/eUweTzxaB9CegKbcqpmhFeEC3qsxzCfomOJMQ==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"63146\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"daca_3ds\":\"wze7ZkFHQK2H3OlXiKgKWpkdNUDQHIEZyALf9c/iQwYbAarrdRBVrP7ksa0SCVKXMBUypjfpf6GAgB7ekgOwD6TR9D1rnE293Dy1r6z3HPIdatdtzjmSEXJd1/BPB8CJbTk5CLP4cLbW2Q8hJOnm1Jwg/FKM+HlhGC3U7OB/zXbLvL5EllAq/RmCt6nPnS2GgRKVOT1qZijKo3eEEzlFo3dTKuIze1d7tS5R5hF/IphI68hOdIEa0wK1IWqfdBNnTUmB8HKuJfRzv8kf32BROEVcE0PWNoXj4N0JsrCYJgCbBHN39ZJDnLSnztW5F8EmbdnCFAMgDQ/bOEkYXBTXWA==\",\r\n\"eci_3ds\":\"06\",\r\n\"txn_id_3ds\":\"3132333435363738393031323334353637383930\",\r\n\"merchant_id\":\"{{merchant_id}}\",\r\n\"terminal_id\":\"{{terminal_id}}\",\r\n\"order_number\":\"{{collection_name}}\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #134-Discover_sale_3ds_25002_eci06",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"SaleTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"Sale txn_id:\", SaleTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"2019091101\",\r\n\"amount\":\"11.00\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n//\"merchant_id\":\"06696262\",\r\n//\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"jzx2VOtgTnE9lB9IagFlG68nbP6W6//ZybsGlf0y+EbRGN7I+Gm4f3vat8jO2kEp9CUqaG9TdnqHyGqefCONVPXwe+pncyaGYe9K0EbYNiQvgq1LAx7riWXsYoBLHXzwQZ2XzmpVF1ZA8MA0Rx9NlphPEbIuZskGhJxPRl+aA9wldZ5V57frWIwgEMw5lMHL7s3zsT1KaX3852mv6LfbZnYu2YoYxYByzfvfm1ug323xA8bclJ+MKxw3JR72lXHCdhPokfL1pYaYlk0hTNpPZTPgsvy49mqpVBcgSNTAwuFnr5sURttizoKyagUfqbNqi2FWXhOk2UAAqL+fHaf3Eg==\",\r\n\"transaction_type\":\"SALE\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"BdEMhzsvHXRPz/d5otqbkVZ5R4HGqOIGojD0xEhrmVrLR4F2e7PtF3irxC9g6A7XGIdJ73seEqIwI8OJMTNf9x6LfKc/pWTY7QSGqDoE0fA79SQFl31XfBzPrsJ8qZ7ThIdP3OHRCPL8+LwKy4qnLP8+ETdgm8dCXhr0eEKxajAol/celafwfWcIUx/D/icxsTzb4feaUuCg0RJhqOAVlN/NnanhirA/G+qGXeoVjsS0lW7BF4Y3yl4/YexGlHjmy68EVlftOQ0db2V9dfEzYsyOVuQjTtwLsb5kNisauGrwYkiy/eUweTzxaB9CegKbcqpmhFeEC3qsxzCfomOJMQ==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"63146\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"daca_3ds\":\"wze7ZkFHQK2H3OlXiKgKWpkdNUDQHIEZyALf9c/iQwYbAarrdRBVrP7ksa0SCVKXMBUypjfpf6GAgB7ekgOwD6TR9D1rnE293Dy1r6z3HPIdatdtzjmSEXJd1/BPB8CJbTk5CLP4cLbW2Q8hJOnm1Jwg/FKM+HlhGC3U7OB/zXbLvL5EllAq/RmCt6nPnS2GgRKVOT1qZijKo3eEEzlFo3dTKuIze1d7tS5R5hF/IphI68hOdIEa0wK1IWqfdBNnTUmB8HKuJfRzv8kf32BROEVcE0PWNoXj4N0JsrCYJgCbBHN39ZJDnLSnztW5F8EmbdnCFAMgDQ/bOEkYXBTXWA==\",\r\n\"eci_3ds\":\"06\",\r\n\"txn_id_3ds\":\"3132333435363738393031323334353637383930\",\r\n\"merchant_id\":\"{{merchant_id}}\",\r\n\"terminal_id\":\"{{terminal_id}}\",\r\n\"order_number\":\"{{collection_name}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AuthTxnId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CurrentDate",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "SaleTxnId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "collection_name",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
