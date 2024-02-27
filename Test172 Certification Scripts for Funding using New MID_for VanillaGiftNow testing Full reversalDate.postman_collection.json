@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "7f9ddbd2-026d-42a7-bcb5-30c09617bfbf",
+		"name": "Test #172 Certification Scripts for Funding using New MID_for VanillaGiftNow testing Full reversalDate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2688773"
+	},
+	"item": [
+		{
+			"name": "Test #172_Visa_0018_auth_1201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"pm.environment.set(\"CurrentDate\",moment().format(\"YYYY-MM-DD HH:MM:SS:SSS\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"20230809\",\r\n\"txn_id\":null,\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"AUTH\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":\"kNGWbKMnpsachG3TzPnYtHRo2Rx3FeEwzmi/XwBnjxWtlI/R3KV5fbMgxsIp+Yp2L/QSrdlIWNPkJrtHNIvo2TuppQnpqULYRUsc2ej5qzfQ67zvmHDlbbgWxBxazhsEij5XazO+eIVlD7NIuq8Yw3g/vc7NkiNkzK97PeYsOvaQKAfd7bUdX6fi2CGruc5hb5EzprKkEPGURyuuCkxMqxs7n7J/NOrHgzSbRdiMG6KnqKyUVVK+P9ybceAKBzXOn5dEbFhqzY6f7oKkAVfd8MJ7G0hY9RFu5S8vR+KQ53hi9GB+xE6xLFL/f9rim+7lsKnSWA9/UGmN/FfzbWS9RA==\",\r\n\"expiration_date\":\"MK18ylZZXSjm6CXISbkmhVOoodxiegiBsWGGNGqiSYkZDQhqFZ4O05m/YWFT18rn4QQBPNnALnBxFJO8jcOu/edw5NFD+EYgbIZCtHbUxY63aahlPz2Cd5WtFqz5NLzZCF49QUle8Esecj85eFsbhIg5xzPGtd777qEVERmGLZfZXQCnxTgXg1bcy5ZD2UN+a0ydSfCLERXSDb7/ubrHhXQ3fHBRa1FbSKbu3R89yH6zz8saeBY/NLbJFP6gR5kzWrnaZsN2Ov/Wb82y9SvWOBIVmoJLwr69W9lsZnAO9b/wjU3FeZoJYsDjxA2irAVYoiKIf5aDJQqD6vFntmpIuA==\",\r\n\"card_csc\":\"Oz4TAofQZ0G4yPKbooyrT3a4cnlIN5KU5pUa4L+rURHpPCEWfKIfbyGzDFqV0r4k7mGOIAcvHgtrE2sj5bENtcBuPYvbWRu9oIwDaZt+wPd/K6IH6BJ5pRsusYq4edjTcB2oHvm6IoNiK3xvpjZ8x1VPkldhioUZK9xQD03QTZrFxTQb3Dk6cBzyyjEi5nH9DR5aFbZuk7F+CeNkmNHZQ89P1060VxdwEflfDdpreWKcUhJYcyFulvGSjm8aMEedguBbl72Ie13bGIDjMSNu1dwOesGdX6m7wIspIC/5foU302mtohE7MMWUF6sU3hdocBHccU+zMNmqvegiGxHeXA==\",\r\n\"use_card_csc\":\"YES\",\r\n\"cavv_3ds\":null,\r\n\"currency_code\":\"840\",\r\n\"amount\":\"12.01\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"George\",\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #172_Visa_0018_fullReversal_void_1201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"pm.environment.set(\"CurrentDate\",moment().format(\"YYYY-MM-DD HH:MM:SS:SSS\"));\r",
+							"\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"{{CurrentDate}}\",\r\n\"txn_reference\":\"20230809\",\r\n\"amount\":\"12.01\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"VOID\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":null,\r\n\"cavv_3ds\":null,\r\n\"use_card_csc\":\"NO\",\r\n\"currency_code\":\"840\",\r\n\"use_avs\":\"NO_AVS\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":null,\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"NO\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AuthTxnId[]",
+			"value": ""
+		},
+		{
+			"key": "AuthTxnId",
+			"value": ""
+		},
+		{
+			"key": "SaleTxnId[]",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CurrentDate",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
