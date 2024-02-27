@@ -1,0 +1,764 @@
+{
+	"info": {
+		"_postman_id": "87b67b86-25ba-4df6-96ed-e65ba6aa819f",
+		"name": "Certification Scripts for Funding using New MID_for VanillaGiftNow testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2688773"
+	},
+	"item": [
+		{
+			"name": "Test #171_Visa_0018_auth_1101",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-09-05 05:30:24.775\",\r\n\"txn_reference\":\"20230905\",\r\n\"order_number\":\"ORDNUM2626\",\r\n\"txn_id\":null,\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"AUTH\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":\"kNGWbKMnpsachG3TzPnYtHRo2Rx3FeEwzmi/XwBnjxWtlI/R3KV5fbMgxsIp+Yp2L/QSrdlIWNPkJrtHNIvo2TuppQnpqULYRUsc2ej5qzfQ67zvmHDlbbgWxBxazhsEij5XazO+eIVlD7NIuq8Yw3g/vc7NkiNkzK97PeYsOvaQKAfd7bUdX6fi2CGruc5hb5EzprKkEPGURyuuCkxMqxs7n7J/NOrHgzSbRdiMG6KnqKyUVVK+P9ybceAKBzXOn5dEbFhqzY6f7oKkAVfd8MJ7G0hY9RFu5S8vR+KQ53hi9GB+xE6xLFL/f9rim+7lsKnSWA9/UGmN/FfzbWS9RA==\",\r\n\"expiration_date\":\"MK18ylZZXSjm6CXISbkmhVOoodxiegiBsWGGNGqiSYkZDQhqFZ4O05m/YWFT18rn4QQBPNnALnBxFJO8jcOu/edw5NFD+EYgbIZCtHbUxY63aahlPz2Cd5WtFqz5NLzZCF49QUle8Esecj85eFsbhIg5xzPGtd777qEVERmGLZfZXQCnxTgXg1bcy5ZD2UN+a0ydSfCLERXSDb7/ubrHhXQ3fHBRa1FbSKbu3R89yH6zz8saeBY/NLbJFP6gR5kzWrnaZsN2Ov/Wb82y9SvWOBIVmoJLwr69W9lsZnAO9b/wjU3FeZoJYsDjxA2irAVYoiKIf5aDJQqD6vFntmpIuA==\",\r\n\"card_csc\":\"Oz4TAofQZ0G4yPKbooyrT3a4cnlIN5KU5pUa4L+rURHpPCEWfKIfbyGzDFqV0r4k7mGOIAcvHgtrE2sj5bENtcBuPYvbWRu9oIwDaZt+wPd/K6IH6BJ5pRsusYq4edjTcB2oHvm6IoNiK3xvpjZ8x1VPkldhioUZK9xQD03QTZrFxTQb3Dk6cBzyyjEi5nH9DR5aFbZuk7F+CeNkmNHZQ89P1060VxdwEflfDdpreWKcUhJYcyFulvGSjm8aMEedguBbl72Ie13bGIDjMSNu1dwOesGdX6m7wIspIC/5foU302mtohE7MMWUF6sU3hdocBHccU+zMNmqvegiGxHeXA==\",\r\n\"use_card_csc\":\"YES\",\r\n\"cavv_3ds\":null,\r\n\"currency_code\":\"840\",\r\n\"amount\":\"11.01\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"George\",\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #171c_Visa_0018_capture_1101",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-08-09 07:30:24.775\",\r\n\"txn_reference\":\"20230809\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"amount\":\"11.01\",\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"CAPTURE\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":null,\r\n\"cavv_3ds\":null,\r\n\"expiration_date\":null,\r\n\"card_csc\":null,\r\n\"use_card_csc\":\"NO\",\r\n\"currency_code\":\"840\",\r\n\"use_avs\":\"NO_AVS\",\r\n\"avs_address\":null,\r\n\"avs_zip\":null,\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"john.doe@example.com\",\r\n\"cardholder_name\":null,\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"NO\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":\"05\",\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #171_Visa_0026_auth_1101",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2024-01-22 05:30:24.775\",\r\n\"txn_reference\":\"20230905\",\r\n\"order_number\":\"ORDNUM2626\",\r\n\"txn_id\":null,\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"AUTH\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":\"cAWfJPIj8zo25LlEH9gHZSe17C9xAUTWDRqt3U+C4mCsPniUJLrZEhqF7GsZI7TfFzENk5cYPH9DFupv/MPyk3LKUEy2hRIM1Q1BNAeJVch5FZerXJkfgpj4Qto8vsaKIRvItkoaMLdlpFpaPicBPFczCIbQh6HGWMSkfk0jXHcby+DP3yjt6V2q97acU7AHubfTGDeG0c0Kn1vzqloQiM1Pa0PwclNwDw7DJlUWRY/+YhrJRriEIioJ5I7cqAG2GEE17f4rXEFIcgVLD9m4Nf/dBsLOumsPK/qfrwyoTRdkkG5y7xhkldkcOcHikE5F9FTCBYHJYgRTtqgZZ/WS3Q==\",\r\n\"expiration_date\":\"MK18ylZZXSjm6CXISbkmhVOoodxiegiBsWGGNGqiSYkZDQhqFZ4O05m/YWFT18rn4QQBPNnALnBxFJO8jcOu/edw5NFD+EYgbIZCtHbUxY63aahlPz2Cd5WtFqz5NLzZCF49QUle8Esecj85eFsbhIg5xzPGtd777qEVERmGLZfZXQCnxTgXg1bcy5ZD2UN+a0ydSfCLERXSDb7/ubrHhXQ3fHBRa1FbSKbu3R89yH6zz8saeBY/NLbJFP6gR5kzWrnaZsN2Ov/Wb82y9SvWOBIVmoJLwr69W9lsZnAO9b/wjU3FeZoJYsDjxA2irAVYoiKIf5aDJQqD6vFntmpIuA==\",\r\n\"card_csc\":\"Oz4TAofQZ0G4yPKbooyrT3a4cnlIN5KU5pUa4L+rURHpPCEWfKIfbyGzDFqV0r4k7mGOIAcvHgtrE2sj5bENtcBuPYvbWRu9oIwDaZt+wPd/K6IH6BJ5pRsusYq4edjTcB2oHvm6IoNiK3xvpjZ8x1VPkldhioUZK9xQD03QTZrFxTQb3Dk6cBzyyjEi5nH9DR5aFbZuk7F+CeNkmNHZQ89P1060VxdwEflfDdpreWKcUhJYcyFulvGSjm8aMEedguBbl72Ie13bGIDjMSNu1dwOesGdX6m7wIspIC/5foU302mtohE7MMWUF6sU3hdocBHccU+zMNmqvegiGxHeXA==\",\r\n\"use_card_csc\":\"YES\",\r\n\"cavv_3ds\":null,\r\n\"currency_code\":\"840\",\r\n\"amount\":\"1.00\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"George\",\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #172_Visa_0018_auth_1201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-08-09 05:30:24.775\",\r\n\"txn_reference\":\"20230809\",\r\n\"txn_id\":null,\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"AUTH\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":\"kNGWbKMnpsachG3TzPnYtHRo2Rx3FeEwzmi/XwBnjxWtlI/R3KV5fbMgxsIp+Yp2L/QSrdlIWNPkJrtHNIvo2TuppQnpqULYRUsc2ej5qzfQ67zvmHDlbbgWxBxazhsEij5XazO+eIVlD7NIuq8Yw3g/vc7NkiNkzK97PeYsOvaQKAfd7bUdX6fi2CGruc5hb5EzprKkEPGURyuuCkxMqxs7n7J/NOrHgzSbRdiMG6KnqKyUVVK+P9ybceAKBzXOn5dEbFhqzY6f7oKkAVfd8MJ7G0hY9RFu5S8vR+KQ53hi9GB+xE6xLFL/f9rim+7lsKnSWA9/UGmN/FfzbWS9RA==\",\r\n\"expiration_date\":\"MK18ylZZXSjm6CXISbkmhVOoodxiegiBsWGGNGqiSYkZDQhqFZ4O05m/YWFT18rn4QQBPNnALnBxFJO8jcOu/edw5NFD+EYgbIZCtHbUxY63aahlPz2Cd5WtFqz5NLzZCF49QUle8Esecj85eFsbhIg5xzPGtd777qEVERmGLZfZXQCnxTgXg1bcy5ZD2UN+a0ydSfCLERXSDb7/ubrHhXQ3fHBRa1FbSKbu3R89yH6zz8saeBY/NLbJFP6gR5kzWrnaZsN2Ov/Wb82y9SvWOBIVmoJLwr69W9lsZnAO9b/wjU3FeZoJYsDjxA2irAVYoiKIf5aDJQqD6vFntmpIuA==\",\r\n\"card_csc\":\"Oz4TAofQZ0G4yPKbooyrT3a4cnlIN5KU5pUa4L+rURHpPCEWfKIfbyGzDFqV0r4k7mGOIAcvHgtrE2sj5bENtcBuPYvbWRu9oIwDaZt+wPd/K6IH6BJ5pRsusYq4edjTcB2oHvm6IoNiK3xvpjZ8x1VPkldhioUZK9xQD03QTZrFxTQb3Dk6cBzyyjEi5nH9DR5aFbZuk7F+CeNkmNHZQ89P1060VxdwEflfDdpreWKcUhJYcyFulvGSjm8aMEedguBbl72Ie13bGIDjMSNu1dwOesGdX6m7wIspIC/5foU302mtohE7MMWUF6sU3hdocBHccU+zMNmqvegiGxHeXA==\",\r\n\"use_card_csc\":\"YES\",\r\n\"cavv_3ds\":null,\r\n\"currency_code\":\"840\",\r\n\"amount\":\"12.01\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"George\",\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #172_Visa_0018_fullReversal_void_1201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-08-09 08:30:24.775\",\r\n\"txn_reference\":\"20230809\",\r\n\"amount\":\"12.01\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"VOID\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":null,\r\n\"cavv_3ds\":null,\r\n\"use_card_csc\":\"NO\",\r\n\"currency_code\":\"840\",\r\n\"use_avs\":\"NO_AVS\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":null,\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"NO\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #181_MC_0059_auth_1201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-09-05 05:15:10:714\",\r\n\"txn_reference\":\"2023090501\",\r\n\"amount\":\"11.01\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"ZLtJNRnZ8eo2oNazuLOf5SzM9fadrYYGuR0alaCBqkrZhZW2yGvrqaIXraLUTuTmdURngXvnHG5trAZFN5R51Y04yTQcL7Cip7QqdhkH3nHN2/DFLJpB770aRHnf57xQotrPZdLnl8+iCvODEz8h+JGyEBtL0AAZhppEawvT5BCbofa3LjrTlruUpy8C3jvOf7TXnkTM24Ln8x8qCrl3L6k4rtGOADxhO6fJZY6YmPB73DyKKVWTWK0YbCT4gs71v+D7OTiq8WW7NuMLIKKMqb6ix/q8JBC+j5Q/GrOzEYtInEvjRDGXLtffPq6s5Qh30KbnvwJAcIS5LDNE5l3Wtg==\",\r\n\"transaction_type\":\"AUTH\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"MK18ylZZXSjm6CXISbkmhVOoodxiegiBsWGGNGqiSYkZDQhqFZ4O05m/YWFT18rn4QQBPNnALnBxFJO8jcOu/edw5NFD+EYgbIZCtHbUxY63aahlPz2Cd5WtFqz5NLzZCF49QUle8Esecj85eFsbhIg5xzPGtd777qEVERmGLZfZXQCnxTgXg1bcy5ZD2UN+a0ydSfCLERXSDb7/ubrHhXQ3fHBRa1FbSKbu3R89yH6zz8saeBY/NLbJFP6gR5kzWrnaZsN2Ov/Wb82y9SvWOBIVmoJLwr69W9lsZnAO9b/wjU3FeZoJYsDjxA2irAVYoiKIf5aDJQqD6vFntmpIuA==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"Oz4TAofQZ0G4yPKbooyrT3a4cnlIN5KU5pUa4L+rURHpPCEWfKIfbyGzDFqV0r4k7mGOIAcvHgtrE2sj5bENtcBuPYvbWRu9oIwDaZt+wPd/K6IH6BJ5pRsusYq4edjTcB2oHvm6IoNiK3xvpjZ8x1VPkldhioUZK9xQD03QTZrFxTQb3Dk6cBzyyjEi5nH9DR5aFbZuk7F+CeNkmNHZQ89P1060VxdwEflfDdpreWKcUhJYcyFulvGSjm8aMEedguBbl72Ie13bGIDjMSNu1dwOesGdX6m7wIspIC/5foU302mtohE7MMWUF6sU3hdocBHccU+zMNmqvegiGxHeXA==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"txn_id_3ds\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #182_MC_0059_fullReversal_void_1201",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-08-09 08:15:10:714\",\r\n\"txn_reference\":\"2023080901\",\r\n\"amount\":\"11.01\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":null,\r\n\"transaction_type\":\"VOID\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":null,\r\n\"use_card_csc\":\"NO\",\r\n\"use_avs\":\"NO_AVS\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"ucaf_data_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"txn_id_3ds\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #183_MC_0059_auth_1101",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-09-05 05:15:10:714\",\r\n\"txn_reference\":\"2023090501\",\r\n\"amount\":\"11.01\",\r\n\"currency_code\":\"840\",\r\n\"country_code\":\"840\",\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\",\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"description\":\"json txn\",\r\n\"card_number\":\"ZLtJNRnZ8eo2oNazuLOf5SzM9fadrYYGuR0alaCBqkrZhZW2yGvrqaIXraLUTuTmdURngXvnHG5trAZFN5R51Y04yTQcL7Cip7QqdhkH3nHN2/DFLJpB770aRHnf57xQotrPZdLnl8+iCvODEz8h+JGyEBtL0AAZhppEawvT5BCbofa3LjrTlruUpy8C3jvOf7TXnkTM24Ln8x8qCrl3L6k4rtGOADxhO6fJZY6YmPB73DyKKVWTWK0YbCT4gs71v+D7OTiq8WW7NuMLIKKMqb6ix/q8JBC+j5Q/GrOzEYtInEvjRDGXLtffPq6s5Qh30KbnvwJAcIS5LDNE5l3Wtg==\",\r\n\"transaction_type\":\"AUTH\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"expiration_date\":\"MK18ylZZXSjm6CXISbkmhVOoodxiegiBsWGGNGqiSYkZDQhqFZ4O05m/YWFT18rn4QQBPNnALnBxFJO8jcOu/edw5NFD+EYgbIZCtHbUxY63aahlPz2Cd5WtFqz5NLzZCF49QUle8Esecj85eFsbhIg5xzPGtd777qEVERmGLZfZXQCnxTgXg1bcy5ZD2UN+a0ydSfCLERXSDb7/ubrHhXQ3fHBRa1FbSKbu3R89yH6zz8saeBY/NLbJFP6gR5kzWrnaZsN2Ov/Wb82y9SvWOBIVmoJLwr69W9lsZnAO9b/wjU3FeZoJYsDjxA2irAVYoiKIf5aDJQqD6vFntmpIuA==\",\r\n\"use_card_csc\":\"YES\",\r\n\"card_csc\":\"Oz4TAofQZ0G4yPKbooyrT3a4cnlIN5KU5pUa4L+rURHpPCEWfKIfbyGzDFqV0r4k7mGOIAcvHgtrE2sj5bENtcBuPYvbWRu9oIwDaZt+wPd/K6IH6BJ5pRsusYq4edjTcB2oHvm6IoNiK3xvpjZ8x1VPkldhioUZK9xQD03QTZrFxTQb3Dk6cBzyyjEi5nH9DR5aFbZuk7F+CeNkmNHZQ89P1060VxdwEflfDdpreWKcUhJYcyFulvGSjm8aMEedguBbl72Ie13bGIDjMSNu1dwOesGdX6m7wIspIC/5foU302mtohE7MMWUF6sU3hdocBHccU+zMNmqvegiGxHeXA==\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"402-426-0001\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"John Doe\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"txn_id_3ds\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #183c_MC_0059_capture_1101",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.get(AuthTxnId)\r",
+							"console.log(\"Capture: auth txn_id:\", AuthTxnId)\r",
+							"pm.collectionVariables.set(\"AuthTxnId\", AuthTxnId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-08-09 07:30:24.775\",\r\n\"txn_reference\":\"2023080901\",\r\n\"txn_id\":\"{{AuthTxnId}}\",\r\n\"clearing_sequence_number\":null,\r\n\"amount\":\"11.01\",\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"CAPTURE\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":null,\r\n\"cavv_3ds\":null,\r\n\"expiration_date\":null,\r\n\"card_csc\":null,\r\n\"use_card_csc\":\"NO\",\r\n\"currency_code\":\"840\",\r\n\"use_avs\":\"NO_AVS\",\r\n\"avs_address\":null,\r\n\"avs_zip\":null,\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"john.doe@example.com\",\r\n\"cardholder_name\":null,\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"NO\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":\"05\",\r\n\"pwp_client_id\":null,\r\n\"pwp_request_id\":null,\r\n\"pwp_basket_reservation_id\":null,\r\n\"pwp_basket_purchase_date\":null,\r\n\"pwp_basket_amount\":null,\r\n\"pwp_rewards_count\":null,\r\n\"pwp_rewards_unit\":null,\r\n\"pwp_rewards_amount\":null,\r\n\"pwp_transaction_approval_code\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #amex_using cert MID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2024-01-22 05:30:24.775\",\r\n\"txn_reference\":\"20230905\",\r\n\"txn_id\":null,\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"AUTH\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":\"sys3FHWFnDvoNkEPk9fTyD7jnPdG7oX836ATpo7WwnhprdS80mVj+pm1+v0xV68JTHjcGoxlovXrrG/81ENXjn/1gYeUtJilXz2E2xbzctDOfYXxx8h6a19JO8habxeA+nsmirYAMwp2t3ySXIV8g3fLZL17vQCWRC4GzacJHf27gDURO4cCkROgw/yEgmXBGFjP+YJrlys2yS3wZmhZSjbx4coHc49aMjhcWSNe/2cY8whnRSAB+p0vKXfP2/0UoFqC9V3Mb0fWUQi36G7gIEE9d2hI7oR47cj6O8FVsD+FBeqTQn/pBWEOzBFPkBgxhpkYqqKLIMcowY1FQFb04w==\",\r\n\"expiration_date\":\"MoOO8XDNSRBZzuCLMWHiUbmcY5WailC2ak2By13mmgKQpBswHizAEDLz0JOMOIE/WUrAuY39uZVo9J2yZ1yaJmJ5tHNiYjRiVyKV0/eDYiYXx/IeKAkvFlsxJ4C6djpr7XJVei5yYEr81kPGke0yHVTFQb1XtB0r6mWNPi85AUaXtgExt3kUcXIjmqGkYlp7hglw/KKP6Xfz3Jn1Zpoj4LVWrysBXo/WHuiLobwqveUGS9zunltmEbVy1SfSGWWNHgCc3AIW1e3Y5JuQ/sJ+YzK2OhVoyGvq0B6vZis1AuH+Vd7R6dxjToVEkMtwxVHk3kZnWfGJDiW08zcx9CWCgA==\",\r\n\"card_csc\":\"KL5o+AEji17JL7aajsqf8J/zjO73fBLvPbEJrhk9SeuTORumGAyIRXthzY1OZHvmmGuEQIy0JsU7USZDgs6co31MS9HP0AyHBf9wxgntRbjYKqtVGMlvUjq3pe5IS2z50cBC7Z7rQCkrRZl762+GKveoJhWWgj+3fK1CQaDpppvj0atvfhG5mTbzFxv4Mpag8lY6qDJwbmZP8QScLnri47aqVmMF31GmHgcIBEODH6OOki+FQ9RXbFgeTVW78qaNOdt/BWeahN8oVXiZNXATAfBb8j+OOkvQjis0wYtlB6i3GiHVcwSgdp30Fh8HyYJozT8nCmrQF3OgR+z5aRmGVg==\",\r\n\"use_card_csc\":\"YES\",\r\n\"cavv_3ds\":null,\r\n\"currency_code\":\"840\",\r\n\"amount\":\"11.01\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"George\",\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test #disc_using cert MID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp= xml2Json(responseBody)\r",
+							"AuthTxnId = resp[\"transaction\"][\"txn_id\"]\r",
+							"console.log(\"auth txn_id: \", AuthTxnId);\r",
+							"pm.test(\"Status code is 200\", () =>\r",
+							" {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							" });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_id\":\"069816163\",\r\n\"txn_timestamp\":\"2023-09-05 05:30:24.775\",\r\n\"txn_reference\":\"20230905\",\r\n\"txn_id\":null,\r\n\"country_code\":\"840\",\r\n\"transaction_entry_mode\":\"KEYED\",\r\n\"transaction_type\":\"AUTH\",\r\n\"customer_presence\":\"NOT_PRESENT\",\r\n\"card_number\":\"niikEuTFw8jNphQVJBtuB1QyyibrKeR/SS1tO2MfghKmKnY9U4URQGXfQwzshRaydmoZqLbsb7RROlfguIX29Tn/Oc57BxB2wA0/YFYGayzMXmnJGxApwdxm80AVs+qp+x8rvr5ymUnwoS/zJ7Wz4mxLql5z4cdnvkPq7LcJfLkmrbLE2tnPyudURHc+OghNsUKmU2dNu0AM6pl3vb3fkmtVe26c0oCw3BCLlJQmBD23EHLBkduuuCeEREglcY1dmAY9Vjximn4ab6YEIHSoQRwmPBbUb0PHiWZHn4/56k0NZuK/8SB6RulgijcOM0b24Q0Q1sQ2dlEFEhL7wI9GbQ==\",\r\n\"expiration_date\":\"AsPEN01IKQY8Jq0zRWz9hovsiFS6asfWZICjSG1Mn6nRFdSteXovb9uvGqQ4OUSIWPxaLQpNmi9ypzRfgD4+tzZWhFGstj//BsMheG0Xo5NFunxF8beMAaji0LyDiw1ZeBSTTFGJdlAaOMaAJ0MOfzkD1fG/3P2Jv0kjMIDFLMi79NTtsj8ANI7TUjsW/GaaqPm7R5Gz0FcPU/q6OQCJP3uurc7rtm0h6aLdu77wykst3A4iHbzgYHSwl30XI3nojwddO87WO4aPu5ujdsnw87f+kRi7rKJD+EE4qbyfSV52q5Cr2SePafZJKO6AForLTz6XQQdaoDASeVi1ia+9ow==\",\r\n\"card_csc\":\"BdEMhzsvHXRPz/d5otqbkVZ5R4HGqOIGojD0xEhrmVrLR4F2e7PtF3irxC9g6A7XGIdJ73seEqIwI8OJMTNf9x6LfKc/pWTY7QSGqDoE0fA79SQFl31XfBzPrsJ8qZ7ThIdP3OHRCPL8+LwKy4qnLP8+ETdgm8dCXhr0eEKxajAol/celafwfWcIUx/D/icxsTzb4feaUuCg0RJhqOAVlN/NnanhirA/G+qGXeoVjsS0lW7BF4Y3yl4/YexGlHjmy68EVlftOQ0db2V9dfEzYsyOVuQjTtwLsb5kNisauGrwYkiy/eUweTzxaB9CegKbcqpmhFeEC3qsxzCfomOJMQ==\",\r\n\"use_card_csc\":\"YES\",\r\n\"cavv_3ds\":null,\r\n\"currency_code\":\"840\",\r\n\"amount\":\"11.01\",\r\n\"use_avs\":\"ADDRESS_AND_ZIP\",\r\n\"avs_address\":\"12115 LACKLAND\",\r\n\"avs_zip\":\"64134\",\r\n\"cardholder_phone_nbr\":\"9103929856\",\r\n\"cardholder_email_address\":\"johndoe@incomm.com\",\r\n\"cardholder_name\":\"George\",\r\n\"description\":null,\r\n\"approval_code\":null,\r\n\"merchant_category\":null,\r\n\"terminal_type\":\"ELECTRONIC_COMMERCE\",\r\n\"partial_authorization_capable\":\"YES\",\r\n\"ucaf_data_3ds\":null,\r\n\"aevv_3ds\":null,\r\n\"txn_id_3ds\":null,\r\n\"daca_3ds\":null,\r\n\"eci_3ds\":null,\r\n\"merchant_id\":\"06696262\",\r\n\"terminal_id\":\"37144348\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v2/transactions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v2",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AuthTxnId[]",
+			"value": ""
+		},
+		{
+			"key": "AuthTxnId",
+			"value": ""
+		},
+		{
+			"key": "SaleTxnId[]",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
